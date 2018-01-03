@@ -1,0 +1,29 @@
+
+// // User Object 
+// const user = {
+//     name: 'Pedro',
+//     age: 27,
+//     location: 'Dublin'
+// };
+
+// function getLocation(location) {
+//     if (location){
+//         return <p>location: {location}</p>;
+//     } 
+// }
+
+// /* Three types of conditioning what is going to be rendered.
+// 1 - The tag 'h1' will be rendered, no matter its content.
+// 2 - The tag 'p' will only be rendered, in case the first conditional is true.
+// 3 - Calling a function to check the conditional, and return what has to be rendered, if the conditional is false, 
+// it will return 'undefined', and the tag will not be rendered.*/
+// const templateTwo = (
+//     <div>
+//         <h1>{user.name ? user.name : 'Anonymous'}</h1>
+//         {user.age >= 18 && <p>Age: {user.age}</p>}
+//         {getLocation(user.location)}
+//     </div>
+// );
+
+---------------------------------------------------------------------------------------------------------------
+
