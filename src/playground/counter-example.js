@@ -1,39 +1,3 @@
-
-// let count = 0;
-
-// //The renderCounterApp function is used to re-render the content to the screen, updating the count variable.
-// const addOne = () => {
-//     count++;
-//     renderCounterApp();
-// }
-// const minusOne = () => {
-//     count--;
-//     renderCounterApp();
-//     //console.log('minusOne');
-// };
-// const reset = () => {
-//     count = 0;
-//     renderCounterApp();
-//     //console.log('Reset');
-// };
-
-
-// // Every time this method is called, it will re-render the content to the screen, as the ReactDOM.render is 
-// // inside renderCounterApp method.
-// const renderCounterApp = () => {
-//     const templateTwo = (
-//         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={addOne}>+1</button>
-//             <button onClick={minusOne}>-1</button>
-//             <button onClick={reset}>Reset</button>  
-//         </div>
-//     );
-//     ReactDOM.render(templateTwo, appRoot);    
-// };
-
-// renderCounterApp();
-
 class Counter extends React.Component{
 
     constructor(props){
@@ -48,6 +12,37 @@ class Counter extends React.Component{
             count: 0
         };
     }
+
+    // 3 sort of lifecycle methods
+    // componentDidUpdate used to check if the component was updated
+    // It can also checks the previous props and states of components
+    // Working with localStorage.
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count){
+            //const json = JSON.stringify(this.state.count);
+            console.log('updating data!');
+            localStorage.setItem('count', this.state.count);
+        }
+    } 
+
+    // componentDidMount used to check if the component was rendered
+    componentDidMount() {
+        
+            const stringCount = localStorage.getItem('count');
+            const count = parseInt(stringCount, 10);
+
+            console.log('fetching data!', count);
+            
+            if(!isNaN(count)){
+                this.setState(() => ({ count: count}));
+            }    
+    }
+    
+    // componentWillUnmount it fires just before our component goes away.
+    componentWillUnmount() {
+        console.log('componentWillUnmount!')
+    }
+
 
     handleAddOne(){
         // setState method access the previous state (current state), and returns a updatep value redendering 
@@ -87,7 +82,8 @@ class Counter extends React.Component{
                 <button onClick={this.handleReset}>Reset</button>
             </div>
         );
-    }
-}
+    };
+};
+
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
