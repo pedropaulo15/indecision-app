@@ -43,7 +43,7 @@ class Counter extends React.Component{
         this.handleMinusOne = this.handleMinusOne.bind(this);
         this.handleReset = this.handleReset.bind(this);
 
-        // Here, we set all the states we want to track
+        // Here, we set all the default states we want to track
         this.state = {
             count: 0
         };
@@ -52,6 +52,7 @@ class Counter extends React.Component{
     handleAddOne(){
         // setState method access the previous state (current state), and returns a updatep value redendering 
         // directly to the screen
+        // prevState = THe current state before the update/change
         this.setState((prevState) => {
             return {
                 /*Updating the count instance variable from this.state from the constructor*/
@@ -71,23 +72,10 @@ class Counter extends React.Component{
     handleReset(){
         // Setting the count to 0
         this.setState(() => {
-            return{
+            return {
                 count: 0
             };
         });
-
-        // Setting the count to 1, after setting the state to 0 as above.
-        this.setState((prevState) => {
-            return{
-                count: prevState.count + 1
-            };
-        });
-
-        // Another way of doing it, but not recommended.
-        // this.setState({
-        //     count: 0
-        // }); 
-
     }
 
     render (){

@@ -26,4 +26,8 @@
 // );
 
 ---------------------------------------------------------------------------------------------------------------
+Run the babel compiler
+babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
 
+Run the server
+live-server public
